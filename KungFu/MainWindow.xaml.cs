@@ -33,6 +33,10 @@ namespace KungFu
 
         private MultiSourceFrameReader multiFrameSourceReader = null;
 
+        private WriteableBitmap bitmap = null; //这个是摄像头
+
+        private WriteableBitmap bitmapTarget = null;//这个是示例图片
+
         private uint bitmapBackBufferSize = 0;
 
         private DepthSpacePoint[] colorMappedToDepthPoints = null;
@@ -47,8 +51,28 @@ namespace KungFu
 
             FrameDescription depthFrameDescreption = this.kinectSensor.DepthFrameSource.FrameDescription;
 
+            int depthWidth = depthFrameDescreption.Width;
+            int depthHeight = depthFrameDescreption.Height;
+
+            FrameDescription colorFrameDescription = this.kinectSensor.ColorFrameSource.FrameDescription;
+
+            int colorWidth = colorFrameDescription.Width;
+            int colorHeight = colorFrameDescription.Height;
+
+            this.colorMappedToDepthPoints = new DepthSpacePoint[colorWidth * colorHeight];
+
+            this.bitmap = new WriteableBitmap(colorWidth, colorHeight, 96, 96, PixelFormats.Bgra32, null);
+
+            this.bitmapBackBufferSize = (uint)((this.bitmap.BackBufferStride * (this.bitmap.PixelHeight - 1)) + (this.bitmap.PixelWidth * this.bytesPerPixel));
+
+            this.kinectSensor.IsAvailableChanged += this.Sensor_IsAvailableChanged;
+
 
             InitializeComponent();
+        }
+
+        private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e) {
+            this.StatusText=this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText : 
         }
     }
 }

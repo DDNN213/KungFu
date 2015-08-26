@@ -45,7 +45,7 @@ namespace KungFu
 
             this.coordinateMapper = this.kinectSensor.CoordinateMapper;
 
-
+            FrameDescription depthFrameDescreption = this.kinectSensor.DepthFrameSource.FrameDescription;
 
 
             InitializeComponent();

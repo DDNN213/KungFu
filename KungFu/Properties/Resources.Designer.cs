@@ -28,6 +28,22 @@ namespace KungFu.Properties
         private static global::System.Resources.ResourceManager resourceMan;
 
         private static global::System.Globalization.CultureInfo resourceCulture;
+        internal static string NoSensorStatusText {
+            get {
+                return ResourceManager.GetString("NoSensorStatusText", resourceCulture);
+            }
+        }
+        internal static string RunningStatusText {
+            get {
+                return ResourceManager.GetString("RunnningStatusText", resourceCulture);
+            }
+        }
+
+        internal static string SensorNotAvailableStatusText {
+            get {
+                return ResourceManager.GetString("SensorNotAvailableStatusText", resourceCulture);
+            }
+        }
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {

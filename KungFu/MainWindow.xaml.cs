@@ -71,9 +71,7 @@ namespace KungFu
 
             this.kinectSensor.Open();
 
-            //this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText : Properties.Resources.SensorNotAvailableStatusText;
-            this.StatusText = "hello";
-            this.statusText = "hello2";
+            this.StatusText = this.kinectSensor.IsAvailable ? "Kinect is connected" : "Kinect is disconnected";
             
             this.DataContext = this;
 
@@ -256,7 +254,7 @@ namespace KungFu
         }
 
         private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e) {
-            this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText : Properties.Resources.SensorNotAvailableStatusText;
+            this.StatusText = this.kinectSensor.IsAvailable ? "Kinect is connected." : "Kinect is disconnected.";
             //这里存在问题
             //检查resourceCulture
         }

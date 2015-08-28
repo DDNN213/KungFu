@@ -255,8 +255,6 @@ namespace KungFu
 
         private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e) {
             this.StatusText = this.kinectSensor.IsAvailable ? "Kinect is connected." : "Kinect is disconnected.";
-            //这里存在问题
-            //检查resourceCulture
         }
     }
 }
